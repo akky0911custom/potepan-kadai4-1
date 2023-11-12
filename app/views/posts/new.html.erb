@@ -1,0 +1,46 @@
+<div class="main posts-new">
+  <div class="container">
+    <div class="form">
+      <h3 class="form-heading">予定の新規追加</h3>
+      <div class="form-body">
+        <% @post.errors.full_messages.each do |message| %>
+          <div class="form-error">
+            <%= message %>
+          </div>
+        <% end %>
+        <%= form_with model: @post do |post| %>
+          <table class="form-item">
+            <tr>
+              <th><%= post.label :title,"タイトル" %></th>
+              <td><%= post.text_field :title %></td>
+            </tr>
+            <tr>
+              <th><%= post.label :start_date,"開始日" %></th>
+              <td><%= post.date_field :start_date %></td>
+            </tr>
+            <tr>
+              <th><%= post.label :end_date,"終了日" %></th>
+              <td><%= post.date_field :end_date %></td>
+            </tr>
+          </table>
+          <p><%= post.label :is_all_day,"終日" %></p>
+          <p><%= post.check_box :is_all_day, checked_value: true, unchecked_value: false %></p>
+          <table class="form-item">
+            <tr>
+              <th><%= post.label :memo,"スケジュールメモ" %></th>
+              <td><%= post.text_area:memo %></td>
+            </tr>
+          </table>
+          <div class="form-btns">
+            <p>
+              <%= link_to "キャンセル", posts_index_path, class:"btn2" %>
+            </p>
+            <p>
+              <%= post.submit "登録", class:"btn" %>
+            </p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
