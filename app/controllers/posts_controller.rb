@@ -16,7 +16,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to :posts_index
     else 
-      redirect_to :new_post
+      render "new"
     end
   end
 

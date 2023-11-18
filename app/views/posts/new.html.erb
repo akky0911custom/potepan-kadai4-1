@@ -2,12 +2,8 @@
   <div class="container">
     <div class="form">
       <h3 class="form-heading">予定の新規追加</h3>
+      <%= render 'layouts/error_messages', object: @post %>
       <div class="form-body">
-        <% @post.errors.full_messages.each do |message| %>
-          <div class="form-error">
-            <%= message %>
-          </div>
-        <% end %>
         <%= form_with model: @post do |post| %>
           <table class="form-item">
             <tr>
