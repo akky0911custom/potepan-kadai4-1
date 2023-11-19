@@ -15,5 +15,12 @@
       <h3>スケジュール管理アプリ</h3>
     </header>
     <%= yield %>
+
+    <% if flash[:notice] %>
+    <div class="flash">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
   </body>
 </html>

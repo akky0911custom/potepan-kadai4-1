@@ -12,17 +12,17 @@
     <table class="posts-show-item">
       <tr>
         <th>開始日</th>
-        <td><%= @post.start_date.strftime("%Y年%m月%d日") %></td>
+        <td><%= @post.start_date.strftime("%Y/%m/%d") %></td>
       </tr>
       <tr>
         <th>終了日</th>
-        <td><%= @post.end_date.strftime("%Y年%m月%d日") %></td>
+        <td><%= @post.end_date.strftime("%Y/%m/%d") %></td>
       </tr>
       <tr>
         <th>終日</th>
         <td><% if @post.is_all_day == true %>
         ○
-        <% elsif post.is_all_day == false %>
+        <% else %>
         <% end %>
         </td>
       </tr>
