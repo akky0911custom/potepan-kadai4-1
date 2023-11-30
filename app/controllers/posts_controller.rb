@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create(params.require(:post).permit(:title,:start_date,:end_date,:is_all_day,:memo))
+    @post = Post.create(post_params)
     if @post.save
       flash[:notice] = "投稿を作成しました"
       redirect_to :posts_index
@@ -28,7 +28,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.update(params.require(:post).permit(:title,:start_date,:end_date,:is_all_day,:memo))
+    if @post.update(post_params)
       flash[:notice] = "投稿を編集しました"
       redirect_to :posts_index
     else
@@ -43,4 +43,8 @@ class PostsController < ApplicationController
     redirect_to :posts_index
   end
 
+private
+  def post_params
+    params.require(:post).permit(:title,:start_date,:end_date,:is_all_day,:memo)
+  end
 end

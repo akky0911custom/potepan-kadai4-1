@@ -1,14 +1,18 @@
 <div class="main posts-new">
   <div class="container">
+    <div class="top-wrapper">
+      <h2>予定の新規追加</h2>
+    </div>
     <div class="form">
-      <h3 class="form-heading">予定の新規追加</h3>
-      <%= render 'layouts/error_messages', object: @post %>
+      <div class="form-heading">
+        <%= render 'layouts/error_messages', object: @post %>
+      </div>
       <div class="form-body">
         <%= form_with model: @post do |post| %>
-          <table class="form-item">
+          <table>
             <tr>
               <th><%= post.label :title,"タイトル" %></th>
-              <td><%= post.text_field :title %></td>
+              <td><%= post.text_field :title, placeholder: "タイトルを入力" %></td>
             </tr>
             <tr>
               <th><%= post.label :start_date,"開始日" %></th>
@@ -18,22 +22,20 @@
               <th><%= post.label :end_date,"終了日" %></th>
               <td><%= post.date_field :end_date %></td>
             </tr>
-          </table>
-          <p><%= post.label :is_all_day,"終日" %></p>
-          <p><%= post.check_box :is_all_day, checked_value: true, unchecked_value: false %></p>
-          <table class="form-item">
+            <tr>
+              <th><%= post.label :is_all_day,"終日" %></th>
+              <td><%= post.check_box :is_all_day, checked_value: true, unchecked_value: false %></td>
+            </tr>
             <tr>
               <th><%= post.label :memo,"スケジュールメモ" %></th>
-              <td><%= post.text_area:memo %></td>
+              <td><%= post.text_area:memo, placeholder: "メモを入力" %></td>
             </tr>
           </table>
           <div class="form-btns">
-            <p>
-              <%= link_to "キャンセル", posts_index_path, class:"btn2" %>
-            </p>
-            <p>
-              <%= post.submit "登録", class:"btn" %>
-            </p>
+            <%= link_to "キャンセル", posts_index_path, class:"btn cancel" %>
+          <p>
+            <%= post.submit "登録", class:"btn commit" %>
+          </p>
           </div>
         <% end %>
       </div>
